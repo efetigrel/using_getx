@@ -19,6 +19,8 @@ class _HomeState extends State<Home> {
     return Scaffold(
       body: _currentScreen,
       floatingActionButton: FloatingActionButton(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
           backgroundColor: Colors.black,
           foregroundColor: Colors.white,
           child: const Icon(Icons.add),
