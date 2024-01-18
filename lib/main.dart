@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:using_getx/controller.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,60 +11,57 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: Home(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
+class Home extends StatelessWidget {
+  final controller = Get.put(Controller());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
+      appBar: AppBar(title: const Text("counter")),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+          children: [
+            Obx(
+              () => Text('clicks: ${controller.count}'),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+            ElevatedButton(
+              child: const Text('Next Route'),
+              onPressed: () {
+                Get.to(Second());
+              },
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
         child: const Icon(Icons.add),
+        onPressed: () {
+          controller.increment();
+        },
+      ),
+    );
+  }
+}
+
+class Second extends StatelessWidget {
+  final Controller ctrl = Get.find();
+  @override
+  Widget build(context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: Center(
+        child: Text("${ctrl.count}"),
       ),
     );
   }
