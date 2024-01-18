@@ -13,10 +13,7 @@ class _GraphScreenState extends State<GraphScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text(
-          'Graph',
-          style: TextStyle(color: Colors.white),
-        ),
+        title: const Text('Graph'),
       ),
       body: const Center(
         child: Text('Graph Screen'),

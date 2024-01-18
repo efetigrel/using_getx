@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:using_getx/home.dart';
+import 'package:using_getx/views/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,9 +14,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Weight Tracker',
-      theme: ThemeData(
-        appBarTheme: const AppBarTheme(backgroundColor: Colors.black),
-      ),
+      theme: ThemeData.dark(),
       home: Home(),
     );
   }

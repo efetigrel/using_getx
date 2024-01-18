@@ -1,8 +1,9 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:using_getx/graph.dart';
-import 'package:using_getx/history.dart';
+import 'package:using_getx/views/add_record.dart';
+import 'package:using_getx/views/graph.dart';
+import 'package:using_getx/views/history.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -18,11 +19,12 @@ class _HomeState extends State<Home> {
     return Scaffold(
       body: _currentScreen,
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.black,
-        foregroundColor: Colors.white,
-        child: const Icon(Icons.add),
-        onPressed: () {},
-      ),
+          backgroundColor: Colors.black,
+          foregroundColor: Colors.white,
+          child: const Icon(Icons.add),
+          onPressed: () {
+            Get.to(() => const addRecordView());
+          }),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar(
         height: Get.height / 12,
